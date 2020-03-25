@@ -125,7 +125,8 @@ object WebLogMain {
     /*
     For a client session , i calculate the session duration(mins), by subtracting the min and max ts in tat session.
     Then calculate the average across all sessions and all clients
-    Avg Session Time : 1.49 mins
+    Avg Session Time : 1.49 mins for 15 min window
+    Avg Session Time increases to 2.4992 when we use a 30 min window.So 30 mins looks like a better option.
      */
     sessioned_data.groupBy($"sessionid",$"clientip")
                   .agg(((max($"ts").cast("decimal(18,6)") - min($"ts").cast("decimal(18,6)"))/60.0).cast("decimal(18,6)").as("sessiontime"))
