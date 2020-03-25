@@ -5,7 +5,8 @@ I have uploaded the scala file(with comments) and also the Zepellin Json File wh
 used for analyzing the data.
 Zepellin File has the sample results also , so if time permits request to see both.
 
-**My Final Solution would be Approach 3 Code : com.viny.approach3.WebLogMain.scala**
+**My Final Solution would be Approach 3 Code : com.viny.approach3.WebLogMain.scala**  
+Zepellin : approach3.json
 
 Approach 1: 
 In this approach I used a window size of 15 mins, but the window start and end time are fixed(predetermined) for all users
