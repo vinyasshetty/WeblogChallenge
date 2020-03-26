@@ -18,7 +18,12 @@ class SessionUDAF(val windowTime:BigDecimal) extends UserDefinedAggregateFunctio
   ))
 
   def initialize(buffer: MutableAggregationBuffer) = {
-    buffer(0) = 0  // SessionID
+    /* buffer(0) is the SessionID
+     As a future enhancement may be generate new random session id, rather keeping as simple incrementing number from 0.
+     Having random session id , it will be easier to get the to total number of sessions in the data and it will not have to depend
+     on grouping clientip with sessionid.
+     */
+    buffer(0) = 0
     buffer(1) = new BigDecimal("0.0") //Sumoftimediff, sets back to 0 when it gets > 15
   }
 
@@ -32,7 +37,7 @@ class SessionUDAF(val windowTime:BigDecimal) extends UserDefinedAggregateFunctio
 
     }
     else if((buffer.getAs[BigDecimal](1).add(input.getAs[BigDecimal](0))).compareTo(windowTime) > 0){
-      buffer(0) = buffer.getAs[Int](0) + 1
+      buffer(0) = buffer.getAs[Int](0) + 1 //May could have generated random sessionid, then a simple increment
       buffer(1) =  new BigDecimal("0.0")
     }
     else{
