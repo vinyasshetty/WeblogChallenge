@@ -32,12 +32,14 @@ class SessionUDAF(val windowTime:BigDecimal) extends UserDefinedAggregateFunctio
  */
   def update(buffer: MutableAggregationBuffer, input: Row) = {
 
+    //Checks if timediff is greater than the window time
     if((buffer.getAs[BigDecimal](1).add(input.getAs[BigDecimal](0))).compareTo(windowTime) <= 0){
       buffer(1) = buffer.getAs[BigDecimal](1).add(input.getAs[BigDecimal](0))
 
     }
+      //If timediff summ is greater than window time, create new session
     else if((buffer.getAs[BigDecimal](1).add(input.getAs[BigDecimal](0))).compareTo(windowTime) > 0){
-      buffer(0) = buffer.getAs[Int](0) + 1 //May could have generated random sessionid, then a simple increment
+      buffer(0) = buffer.getAs[Int](0) + 1 //Could have generated random sessionid, then a simple increment
       buffer(1) =  new BigDecimal("0.0")
     }
     else{
