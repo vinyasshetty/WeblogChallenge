@@ -83,7 +83,8 @@ object WebLogMain {
     val session_create = new SessionUDAF(new BigDecimal(WINDOW_TIME))
 
     /*
-    This code will use the above UDAF and create the incrementing sessionId for every 15 minute for each client.
+    This code will use the above UDAF and for every visitor/clientip keeps him in a session until X mins(15 mins) after
+    which a new session will be created for the same user.Same would happen for every visitor independently.
     Sessionid starts from 0 for every client.
     Have added a extra descending order on timediff to window below  as compared to window function used in standardize while
     calculating prev_ts(lag) just to make sure that UDAF calc and prev_ts/timediff have the same order even when we have
@@ -91,7 +92,7 @@ object WebLogMain {
      but even if i remove it and use like earlier window ie :
      val new_wndw = Window.partitionBy("clientip").orderBy($"ts"),
      i believe it should work fine  because i looked at the physical plan and it sorts only once and calculates lag and UDAF
-     in the same sorted order. But have kept it for now(Dwonside, see two sorts in Physical Plan).
+     in the same sorted order. But have kept it for now(Downside, see two sorts in Physical Plan).
      */
      val new_wndw = Window.partitionBy("clientip").orderBy($"ts",$"timediff".desc)
     //val new_wndw = Window.partitionBy("clientip").orderBy($"ts")

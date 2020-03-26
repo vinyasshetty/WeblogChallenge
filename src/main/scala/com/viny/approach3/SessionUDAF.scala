@@ -21,7 +21,7 @@ class SessionUDAF(val windowTime:BigDecimal) extends UserDefinedAggregateFunctio
     /* buffer(0) is the SessionID
      As a future enhancement may be generate new random session id, rather keeping as simple incrementing number from 0.
      Having random session id , it will be easier to get the to total number of sessions in the data and it will not have to depend
-     on grouping clientip with sessionid.
+     on grouping clientip with sessionid.For now to keep it simple i have used initial sessionid as 0 for every visitor/clientip
      */
     buffer(0) = 0
     buffer(1) = new BigDecimal("0.0") //Sumoftimediff, sets back to 0 when it gets > 15
