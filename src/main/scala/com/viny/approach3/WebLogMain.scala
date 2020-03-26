@@ -173,7 +173,7 @@ object WebLogMain {
                         min($"ts").as("session_starttime"), max($"ts").as("session_endtime"))
                   .orderBy($"sessiontime".desc).show(false)
     /*
-    I have reused same groupBy repeatdly from Point 2 to 4 , this was just so that it was easier for me to explain my thoughts.
+    I have used same groupBy repeatdly from Point 2 to 4 , this was just so that it was easier for me to explain my thoughts.
     Could have ideally reused them or looked for merging the queries into one.
     */
 

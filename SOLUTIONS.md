@@ -3,7 +3,7 @@ I have used Spark/Scala to implement the requirements.
 
 I have uploaded the scala file(with comments) and also the Zepellin Json File which i
 used for analyzing the data.
-Zepellin File has the sample results also , so if time permits request to see both.
+Zepellin File has the sample results also.
 
 **My Final Solution would be Approach 3 Code : com.viny.approach3.WebLogMain.scala**  
 Zepellin : approach3.json
@@ -31,7 +31,7 @@ As you see, all the user session time and url info is tracked within that predet
 Once this grouping was done , I implemented the 4 requirements in the code package:
 com.viny.approach1.WebLogMain
 
-## sFinal Solution Approach 3:  
+## Final Solution Approach 3:  
 I realized using same fixed start and end time window session for all users does NOT
 give the personalization per user, I would ideally want the 15 minute window to start for a user 
 when he first appears and track him in the same session for next 15 mins and once 15 mins is up, then 
@@ -48,6 +48,5 @@ But even with converted PST time , it would not have impacted by session id gene
 
 Also initially when i was calculating the time diff as a part of SessionId calculation, 
 i converted the timestamp to long but realized that when i did that it took information 
-only upto seconds from timestamp, so for fun tried to retain all the timestamp information 
-by using decimal.
-
+only upto seconds from timestamp, but thought of retaining the entire infomartion till
+microseconds and amd changes to the datatype accordingly.
