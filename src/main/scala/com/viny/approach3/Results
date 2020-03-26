@@ -32,7 +32,7 @@ only showing top 20 rows
 |       1.4907047352|
 +-------------------+
 
-3) Determine unique URL visits per session. Hence used countDistinct
+3) Determine unique URL visits per session. Hence used countDistinct.Desc order on distinct url count.
 +---------+-------------+--------------------------+--------------------------+---------------------+
 |sessionid|clientip     |session_starttime         |session_endtime           |distincturlpersession|
 +---------+-------------+--------------------------+--------------------------+---------------------+
