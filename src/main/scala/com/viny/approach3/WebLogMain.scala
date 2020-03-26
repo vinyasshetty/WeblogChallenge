@@ -16,7 +16,7 @@ object WebLogMain {
     Using lag functions populated a column :prevts for every client, will use this for generating sessionid later
     Also generated a new column called timediff which will have the time difference(in mins) for every client between their two
     consecutive occurences.Thier first appearance record will have timediff as 0 ie when prevts is null.
-    Casted this to Decimal(12,4).
+    Casted this to Decimal(18,6).
      */
   def standardize(spark:SparkSession, raw_data:DataFrame):DataFrame={
     import spark.implicits._
