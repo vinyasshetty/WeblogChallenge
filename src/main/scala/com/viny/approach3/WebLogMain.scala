@@ -105,7 +105,7 @@ object WebLogMain {
       |-- url: string (nullable = true)
       |-- elb_response_code: string (nullable = true)
       |-- prevts: timestamp (nullable = true)
-      |-- timediff: decimal(8,2) (nullable = true)
+      |-- timediff: decimal(18,6) (nullable = true)
       |-- sessionid: integer (nullable = true)
      */
 
