@@ -44,9 +44,9 @@ com.viny.approach3.WebLogMain.scala
 
 Faced issue with timestamp UTC data, where spark was converting it to my system clock by default
 when I casted it to timestamp, so had to handle that explicitly.I wanted to keep the time in UTC. 
-But even with converted PST time , it would not have impacted by session id generation.
+But even with converted PST time , it would not have impacted my session id generation.
 
 Also initially when i was calculating the time diff as a part of SessionId calculation, 
 i converted the timestamp to long but realized that when i did that it took information 
-only upto seconds from timestamp, but thought of retaining the entire infomartion till
+only upto seconds from timestamp, but thought of retaining the entire information till
 microseconds and amd changes to the datatype accordingly.
