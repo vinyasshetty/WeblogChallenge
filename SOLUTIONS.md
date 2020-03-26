@@ -49,4 +49,8 @@ But even with converted PST time , it would not have impacted my session id gene
 Also initially when i was calculating the time diff as a part of SessionId calculation, 
 i converted the timestamp to long but realized that when i did that it took information 
 only upto seconds from timestamp, but thought of retaining the entire information till
-microseconds and amd changes to the datatype accordingly.
+microseconds and made changes to the datatype accordingly.
+
+I looked at user_agent to check if I can use that along with clientip to identify distinct clients
+but was unable to see how to use it reliably,saw some "Googlebot".May be if we have some sort of cookies information,
+it would be helpful.
